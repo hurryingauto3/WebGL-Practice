@@ -1,0 +1,10 @@
+.DS_Store
+*~
+auto/
+*.aux
+*.log
+*.out
+*.pdf
+/main/WebGL
+/tutorial
+*.json

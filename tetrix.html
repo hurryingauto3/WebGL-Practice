@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition; 
+		attribute vec4 vColor; 
+		varying vec4 fragColor;
+        uniform mat4 mRotation;
+		void main() 
+		{ 
+			gl_Position = mRotation * vPosition;
+			gl_PointSize = 10.0; 
+			fragColor = vColor; 
+		}
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float; 
+		varying vec4 fragColor; 
+		void main() { gl_FragColor = fragColor; }
+    </script>
+    
+
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/initShaders.js"></script>
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/MV.js"></script>
+    <script type="text/javascript" src="tetrix.js"></script>
+    <style type="text/css">
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+              -webkit-appearance: none;
+              width: 23%;
+              height: 25px;
+              background: grey;
+              outline: none;
+              opacity: 0.7;
+              -webkit-transition: .2s;
+              transition: opacity .2s;
+        }
+        /* Mouse-over effects */
+        .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background:white; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background: #4CAF50; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+        }
+
+    
+    </style>
+
+    
+</head>
+
+<body style="background-color:black; width: auto; height:auto;">
+    
+    <canvas id="gl-canvas" width="900" height="900" style="position: absolute; left: 460px;"></canvas>
+    Oops ... your browser doesn't support the HTML5 canvas element</canvas>
+    <h1 style="font-family:'Courier New', Courier, monospace;color: white; font-size:xx-large
+    ;"> Tetrix </h1>
+    
+
+    <div class="slidecontainer" >
+        <p style="font-family:'Courier New', Courier, monospace;color: white;">Drag the slider to 
+            change the recursive depth.<br> <br>The animation may 
+            lag after recursion depth <br> is 7 or greater</p>
+      <input type="range" min="0" max="10" value="3" class="slider" id="myRange">
+      <p style="font-family:'Courier New', Courier, monospace;color: white;">Recursive Depth: 
+        <span id="demo"></span></p>
+      <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {   
+        output.innerHTML = this.value;
+}
+      </script>
+    </div>
+    
+        <img src = "https://pythonhosted.org/PyAL/_images/coordinate_rhs.png"><br>
+        <p style="font-family:'Courier New', Courier, monospace;color: white;"> Choose an axis of rotation<br>to start the animation </p>
+        <input type="radio" id="x_axis" name="axis" value="x_axis">
+        <label for="x_axis" style="font-family: 'Courier New', Courier, monospace; color: white;">x-axis</label><br>
+
+        <input type="radio" id="y_axis" name="axis" value="y_axis" >
+        <label for="y_axis" style="font-family: 'Courier New', Courier, monospace; color: white;">y-axis</label><br>
+
+        <input type="radio" id="z_axis" name="axis" value="z_axis">
+        <label for="z_axis" style="font-family: 'Courier New', Courier, monospace; color: white;">z-axis</label><br><br>
+        
+
+
+</body>
+
+</html>

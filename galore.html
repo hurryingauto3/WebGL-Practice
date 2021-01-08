@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        h3{
+            color: white
+        }
+    </style>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition; 
+		attribute vec4 vColor; 
+		varying vec4 fragColor; 
+		void main() 
+		{ 
+			gl_Position = vPosition; 
+			gl_PointSize = 2.5; 
+			fragColor = vColor; 
+		}
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float; 
+		varying vec4 fragColor; 
+		void main() { gl_FragColor = fragColor; }
+    </script>
+
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/initShaders.js"></script>
+    <script type="text/javascript" src="https://www.cs.unm.edu/~angel/BOOK/INTERACTIVE_COMPUTER_GRAPHICS/SEVENTH_EDITION/CODE/Common/MV.js"></script>
+    <script type="text/javascript" src="galore.js"></script>
+</head>
+
+<body style="background-color:black; width: auto; height:auto;">
+    <canvas id="gl-canvas" width=1920px height="1080px">
+    Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<h3 style = "position:absolute;left:10px;top:0px;">
+    <p style = "font-family: 'Courier New', Courier, monospace;font-size:24px;font-style:bold;"> Polygons Galore </p>
+    <p style = "font-family: 'Courier New', Courier, monospace;font-size:16px;font-style:normal;"> 
+    Best viewed in full-screen mode (Press F11)-
+    <br><br>-on an full-HD screen
+    <br><br> *Press r or R to reset to default    
+    <br><br> *Press t or T to toggle between-
+    <br><br>-Quadrilateral and Triangle mode
+
+
+    
+    
+</h3>
+</body>
+
+</html>
